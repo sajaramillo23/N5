@@ -6,6 +6,8 @@ namespace N5.Domain.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public PermissionTypeDto() { }
         public PermissionTypeDto(PermissionType permissionType)
         {
             Id = permissionType.Id;

@@ -9,10 +9,10 @@ namespace Net_Experience.UseCases.Employee.V1
     public partial class EmployeeController
     {
         [HttpPut]
-        [Route("{itemId}")]
+        [Route("{employeeId}")]
         [ProducesResponseType(typeof(UpdateEmployeeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> updateItemAsync(UpdateEmployeeRequest itemRequest, int itemId)
+        public async Task<IActionResult> updateEmployeeAsync(UpdateEmployeeRequest itemRequest, int itemId)
         {
             itemRequest.Id = itemId;
 
