@@ -1,4 +1,5 @@
-﻿using N5.Domain.Interfaces.Command;
+﻿using Microsoft.EntityFrameworkCore;
+using N5.Domain.Interfaces.Command;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -39,7 +40,9 @@ namespace N5.Persistance.Sql.Command
 
         public async Task Update(T entity) 
         {
+            _context.ChangeTracker.Clear();
             _context.Set<T>().Update(entity);
+            
             await Complete();
         }
 

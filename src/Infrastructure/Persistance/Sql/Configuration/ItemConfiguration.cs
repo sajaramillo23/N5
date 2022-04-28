@@ -4,6 +4,7 @@ using N5.Domain.Entities;
 
 namespace N5.Persistance.Sql.Configuration
 {
+    /*
     public class ItemConfiguration : IEntityTypeConfiguration<Item>
     {
         public void Configure(EntityTypeBuilder<Item> entityTypeBuilder)
@@ -15,4 +16,5 @@ namespace N5.Persistance.Sql.Configuration
                              .HasMaxLength(50);
         }
     }
+    */
 }

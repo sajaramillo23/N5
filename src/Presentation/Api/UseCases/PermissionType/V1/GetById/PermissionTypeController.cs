@@ -9,12 +9,12 @@ namespace Net_Experience.UseCases.PermissionType.V1
     public partial class PermissionTypeController
     {
         [HttpGet]
-        [Route("{permissionTypeId}")]
+        [Route("{id}")]
         [ProducesResponseType(typeof(GetPermissionTypeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetPermissionTypeAsync(int itemId)
+        public async Task<IActionResult> GetPermissionTypeAsync(int id)
         {
-            var response = await _mediator.Send(new GetPermissionTypeRequest(itemId));
+            var response = await _mediator.Send(new GetPermissionTypeRequest(id));
             return Ok(response);
         }
     }

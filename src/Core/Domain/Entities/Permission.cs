@@ -12,6 +12,7 @@ namespace N5.Domain.Entities
         public string Name { get; set; }
         public int PermissionTypeId { get; set; }
         public ICollection<EmployeePermission> EmployeePermissions { get; set; }
+        public virtual PermissionType PermissionType { get; set; }
 
     }
 }

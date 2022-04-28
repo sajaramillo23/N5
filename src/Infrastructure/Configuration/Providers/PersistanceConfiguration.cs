@@ -15,6 +15,9 @@ namespace N5.Configuration.Providers
             services.AddDbContext<N5DbContext>(options =>
                                       options.UseSqlServer(configuration.GetConnectionString("SqlConnection")));
 
+
+            
+            /*
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Lockout.MaxFailedAccessAttempts = 5;
@@ -23,7 +26,7 @@ namespace N5.Configuration.Providers
             })
                 .AddEntityFrameworkStores<N5DbContext>()
                 .AddDefaultTokenProviders();
-
+            */
             return services;
         }
     }
