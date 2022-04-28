@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using N5.Domain.Interfaces.Command;
+using N5.Persistance.Sql.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,14 +8,14 @@ namespace N5.Persistance.Sql.Command
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        protected readonly N5DbContext _context;
-        public BaseRepository(N5DbContext context)
+        protected readonly IUnitOfWork _unitOfWork;
+        public BaseRepository(IUnitOfWork context)
         {
-            _context = context;
+            _unitOfWork = context;
         }
         public async Task<T> Add(T entity)
         {
-            var result = await _context.Set<T>().AddAsync(entity);
+            var result = await _unitOfWork.Context.Set<T>().AddAsync(entity);
             await Complete();
 
             return result.Entity;
@@ -22,33 +23,33 @@ namespace N5.Persistance.Sql.Command
 
         public async Task AddRange(IEnumerable<T> entities)
         {
-           await  _context.Set<T>().AddRangeAsync(entities);
+           await  _unitOfWork.Context.Set<T>().AddRangeAsync(entities);
             await Complete();
         }
 
         public async Task Remove(T entity)
         {
-            _context.Set<T>().Remove(entity);
+            _unitOfWork.Context.Set<T>().Remove(entity);
             await Complete();
         }
 
         public async Task RemoveRange(IEnumerable<T> entities)
         {
-            _context.Set<T>().RemoveRange(entities);
+            _unitOfWork.Context.Set<T>().RemoveRange(entities);
             await Complete();
         }
 
         public async Task Update(T entity) 
         {
-            _context.ChangeTracker.Clear();
-            _context.Set<T>().Update(entity);
+            _unitOfWork.Context.ChangeTracker.Clear();
+            _unitOfWork.Context.Set<T>().Update(entity);
             
             await Complete();
         }
 
         public async Task<int> Complete()
         {
-            return await _context.SaveChangesAsync();
+            return await _unitOfWork.Commit();
         }
     }
 }
