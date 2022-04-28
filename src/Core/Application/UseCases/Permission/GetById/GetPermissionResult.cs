@@ -9,6 +9,7 @@ namespace N5.Application.UseCases.Permission.GetById
         public string Name { get; set; }
         public int PermissionTypeId { get; set; }
 
+        public GetPermissionResult() { }
         public GetPermissionResult(PermissionDto dto)
         {
             Id = dto.Id;

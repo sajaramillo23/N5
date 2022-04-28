@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using N5.Configuration.Providers;
 using N5.Persistance.Sql;
+using Nest;
 
 namespace N5.Configuration
 {
@@ -13,6 +14,10 @@ namespace N5.Configuration
         {
             //INFRASTRUCTURE
             services.ConfigurePersistenceServices(configuration);
+            //elastic search
+            ConfigureElasticSearch(services);
+            //ILoger
+            services.AddLogging();
 
             services.AddPersonConfiguration();
             services.AddServiceConfiguration();
@@ -22,6 +27,12 @@ namespace N5.Configuration
             return services;
         }
 
+        private static void ConfigureElasticSearch(IServiceCollection services)
+        {
+            //configures Elastic Search
+            var settings = new ConnectionSettings();
+            services.AddSingleton<IElasticClient>(new ElasticClient(settings));
+        }
 
         public static void Configure(
             this IApplicationBuilder app,
@@ -34,6 +45,8 @@ namespace N5.Configuration
                 using var context = serviceScope.ServiceProvider.GetService<N5DbContext>();
                 context.Database.Migrate();
             }
+
+            
 
             app.UseSwagger();
             app.UseSwaggerUI(x =>

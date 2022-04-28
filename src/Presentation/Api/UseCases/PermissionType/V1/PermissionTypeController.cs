@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Net_Experience.UseCases.PermissionType.V1
 {
@@ -9,10 +10,12 @@ namespace Net_Experience.UseCases.PermissionType.V1
     public partial class PermissionTypeController : ControllerBase 
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<PermissionTypeController> _logger;
 
-        public PermissionTypeController(IMediator mediator)
+        public PermissionTypeController(IMediator mediator,ILogger<PermissionTypeController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
     }
 }
