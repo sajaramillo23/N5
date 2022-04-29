@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using N5.Configuration;
 using Net_Experience.Middleware;
-using Serilog;
 
 namespace Net_Experience
 {
@@ -23,9 +22,7 @@ namespace Net_Experience
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureServices(configuration);
-            
-            //Cors(services);
+            services.ConfigureServices(configuration);            
             services.AddControllers();
         }
 
@@ -34,20 +31,7 @@ namespace Net_Experience
         {
             app.Configure(configuration);            
             app.UseMiddleware<ErrorHandlerMiddleware>();
-
-
-            //app.UseCors("allowSpecificOrigins");
-
-
-            
-
-
-
             app.UseRouting();
-
-
-
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

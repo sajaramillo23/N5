@@ -18,7 +18,7 @@ namespace N5.Configuration
             ConfigureElasticSearch(services);
             //ILoger
             services.AddLogging();
-
+            //other services
             services.AddPersonConfiguration();
             services.AddServiceConfiguration();
             services.AddMediatorConfiguration();
@@ -44,9 +44,7 @@ namespace N5.Configuration
             {
                 using var context = serviceScope.ServiceProvider.GetService<N5DbContext>();
                 context.Database.Migrate();
-            }
-
-            
+            }            
 
             app.UseSwagger();
             app.UseSwaggerUI(x =>
