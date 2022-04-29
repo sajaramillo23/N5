@@ -11,22 +11,16 @@ namespace N5.Configuration.Providers
     public static class RepositoryConfiguration 
     {
         public static IServiceCollection AddPersonConfiguration(this IServiceCollection services)
-        {
-            // Repositories
-            //services.AddScoped<IItemRepository, ItermRepository>();
-            //services.AddScoped<IUserRepository, UserRepository>();
-            //unit of work
+        {            
+            //Unit of work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            // new repositories
+            //Repositories
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeePermissionRepository, EmployeePermissionRepository>();
             services.AddScoped<IPermissionRepository,PermissionRepositoryy>();
             services.AddScoped<IPermissionTypeRepository, PermissionTypeRepository>();
 
-            // Query
-            //services.AddScoped<IItemQuery, ItemQuery>();
-            //services.AddScoped<IUserQuery, UserQuery>();
-            //new queries
+            //Queries
             services.AddScoped<IEmployeeQuery, EmployeeQuery>();
             services.AddScoped<IEmployeePermissionQuery, EmployeePermissionQuery>();
             services.AddScoped<IPermissionQuery, PermissionQuery>();

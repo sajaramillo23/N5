@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace N5.UseCases.Employee.V1
 {
     [ApiController]
-    //[EnableCors("allowSpecificOrigins")]
+    
     [Route("Employees")]
     public partial class EmployeeController : ControllerBase 
     {

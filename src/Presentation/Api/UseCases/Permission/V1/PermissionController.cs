@@ -6,7 +6,7 @@ using Nest;
 namespace N5.UseCases.Permission.V1
 {
     [ApiController]
-    //[EnableCors("allowSpecificOrigins")]
+    
     [Route("Permissions")]
     public partial class PermissionController : ControllerBase 
     {
