@@ -10,17 +10,17 @@ namespace N5.Application.UseCases.Employee.Save
     {
         private readonly IEmployeeService employeeService;
 
-        public SaveEmployeeHandler(IEmployeeService itemService)
+        public SaveEmployeeHandler(IEmployeeService employeeService)
         {
-            employeeService = itemService;
+            this.employeeService = employeeService;
         }
         public async Task<Response<SaveEmployeeResult>> Handle(SaveEmployeeRequest request, CancellationToken cancellationToken)
         {
-           var item = await employeeService.SaveAsync(request.ToEmployeeDto());
+           var employeeDto = await employeeService.SaveAsync(request.ToEmployeeDto());
 
-            var itemResult = new SaveEmployeeResult(item);
+            var employeeResult = new SaveEmployeeResult(employeeDto);
 
-            return new Response<SaveEmployeeResult>(itemResult);
+            return new Response<SaveEmployeeResult>(employeeResult);
         }
     }
 }

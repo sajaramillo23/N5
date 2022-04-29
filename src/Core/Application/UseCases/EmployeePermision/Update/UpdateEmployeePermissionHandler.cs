@@ -17,20 +17,20 @@ namespace N5.Application.UseCases.EmployeePermission.Update
         }
         public async Task<Response<UpdateEmployeePermissionResult>> Handle(UpdateEmployeePermissionRequest request, CancellationToken cancellationToken)
         {
-            await ValidateExistItemAsync(request);
+            await ValidateExistEmployeePermissionAsync(request);
 
-            var item = await _EmployeePermissionService.UpdateAsync(request.ToEmployeePermissionDto());
+            var employeePermissionDto = await _EmployeePermissionService.UpdateAsync(request.ToEmployeePermissionDto());
 
-            var itemResult = new UpdateEmployeePermissionResult(item);
+            var employeePermissionResult = new UpdateEmployeePermissionResult(employeePermissionDto);
 
-            return new Response<UpdateEmployeePermissionResult>(itemResult);
+            return new Response<UpdateEmployeePermissionResult>(employeePermissionResult);
         }
 
-        private async Task ValidateExistItemAsync(UpdateEmployeePermissionRequest request)
+        private async Task ValidateExistEmployeePermissionAsync(UpdateEmployeePermissionRequest request)
         {
-            var itemEntity = await _EmployeePermissionService.GetAsync(request.Id);
+            var employeeEntity = await _EmployeePermissionService.GetAsync(request.Id);
 
-            if (itemEntity is null)
+            if (employeeEntity is null)
             {
                 throw new NotFoundException(MessageGeneral.DontExist);
             }

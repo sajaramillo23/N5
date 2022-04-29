@@ -11,22 +11,22 @@ namespace N5.Application.UseCases.Employee.GetById
     {
         private readonly IEmployeeService _employeeService;
 
-        public GetEmployeeHandler(IEmployeeService itemService)
+        public GetEmployeeHandler(IEmployeeService employeeService)
         {
-            _employeeService = itemService;
+            _employeeService = employeeService;
         }
         public async Task<Response<GetEmployeeResult>> Handle(GetEmployeeRequest request, CancellationToken cancellationToken)
         {
-            var item = await _employeeService.GetAsync(request.Id);
+            var employeeDto = await _employeeService.GetAsync(request.Id);
 
-            if (item is null)
+            if (employeeDto is null)
             {
                 throw new NotFoundException(MessageGeneral.NotFound, MessageGeneral.DontExist);
             }
 
-            var itemResult = new GetEmployeeResult(item);
+            var employeeResult = new GetEmployeeResult(employeeDto);
 
-            return new Response<GetEmployeeResult>(itemResult);
+            return new Response<GetEmployeeResult>(employeeResult);
         }
     }
 }

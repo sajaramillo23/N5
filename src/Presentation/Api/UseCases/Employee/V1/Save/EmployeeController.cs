@@ -13,10 +13,10 @@ namespace N5.UseCases.Employee.V1
         [Route("")]
         [ProducesResponseType(typeof(SaveEmployeeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> saveEmployeeAsync(SaveEmployeeRequest itemRequest)
+        public async Task<IActionResult> saveEmployeeAsync(SaveEmployeeRequest employeeRequest)
         {
-            _logger.LogInformation($"Calling method Employee/save ", itemRequest);
-            var response = await _mediator.Send(itemRequest.ToSaveEmployeeRequest());
+            _logger.LogInformation($"Calling method Employee/save ", employeeRequest);
+            var response = await _mediator.Send(employeeRequest.ToSaveEmployeeRequest());
             
             return Ok(response);
         }

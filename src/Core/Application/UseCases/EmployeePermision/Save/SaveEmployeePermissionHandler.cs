@@ -10,17 +10,17 @@ namespace N5.Application.UseCases.EmployeePermission.Save
     {
         private readonly IEmployeePermissionService EmployeePermissionService;
 
-        public SaveEmployeePermissionHandler(IEmployeePermissionService itemService)
+        public SaveEmployeePermissionHandler(IEmployeePermissionService employeePermissionService)
         {
-            EmployeePermissionService = itemService;
+            EmployeePermissionService = employeePermissionService;
         }
         public async Task<Response<SaveEmployeePermissionResult>> Handle(SaveEmployeePermissionRequest request, CancellationToken cancellationToken)
         {
-           var item = await EmployeePermissionService.SaveAsync(request.ToEmployeePermissionDto());
+           var employeePermissionDto = await EmployeePermissionService.SaveAsync(request.ToEmployeePermissionDto());
 
-            var itemResult = new SaveEmployeePermissionResult(item);
+            var employeeResult = new SaveEmployeePermissionResult(employeePermissionDto);
 
-            return new Response<SaveEmployeePermissionResult>(itemResult);
+            return new Response<SaveEmployeePermissionResult>(employeeResult);
         }
     }
 }

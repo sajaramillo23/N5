@@ -13,10 +13,10 @@ namespace N5.UseCases.PermissionType.V1
         [Route("")]
         [ProducesResponseType(typeof(SavePermissionTypeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> savePermissionTypeAsync(SavePermissionTypeRequest itemRequest)
+        public async Task<IActionResult> savePermissionTypeAsync(SavePermissionTypeRequest permissionTypeRequest)
         {
-            _logger.LogInformation($"Executing PermissionType operation Save", itemRequest);
-            var response = await _mediator.Send(itemRequest.ToSavePermissionTypeRequest());
+            _logger.LogInformation($"Executing PermissionType operation Save", permissionTypeRequest);
+            var response = await _mediator.Send(permissionTypeRequest.ToSavePermissionTypeRequest());
             
             return Ok(response);
         }

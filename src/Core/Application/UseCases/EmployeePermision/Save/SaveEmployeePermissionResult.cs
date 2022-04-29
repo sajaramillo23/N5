@@ -9,11 +9,11 @@ namespace N5.Application.UseCases.EmployeePermission.Save
         public int EmployeeId { get; set; }
         public int PermissionId { get; set; }
 
-        public SaveEmployeePermissionResult(EmployeePermissionDto itemDto) 
+        public SaveEmployeePermissionResult(EmployeePermissionDto employeePermissionDto) 
         {
-            Id = itemDto.Id;
-            EmployeeId = itemDto.EmployeeId;
-            PermissionId = itemDto.PermissionId;
+            Id = employeePermissionDto.Id;
+            EmployeeId = employeePermissionDto.EmployeeId;
+            PermissionId = employeePermissionDto.PermissionId;
 
         }
     }

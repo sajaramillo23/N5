@@ -9,11 +9,11 @@ namespace N5.Application.UseCases.EmployeePermission.Update
         public int EmployeeId { get; set; }
         public int PermissionId { get; set; }
 
-        public UpdateEmployeePermissionResult(EmployeePermissionDto itemDto)
+        public UpdateEmployeePermissionResult(EmployeePermissionDto employeePermissionDto)
         {
-            Id = itemDto.Id;
-            EmployeeId = itemDto.EmployeeId;    
-            PermissionId = itemDto.PermissionId;
+            Id = employeePermissionDto.Id;
+            EmployeeId = employeePermissionDto.EmployeeId;    
+            PermissionId = employeePermissionDto.PermissionId;
         }
     }
 }

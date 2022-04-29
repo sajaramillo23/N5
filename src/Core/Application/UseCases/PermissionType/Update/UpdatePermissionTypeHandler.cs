@@ -11,26 +11,26 @@ namespace N5.Application.UseCases.PermissionType.Update
     {
         private readonly IPermissionTypeService _permissionTypeService;
 
-        public UpdatePermissionTypeHandler(IPermissionTypeService itemService)
+        public UpdatePermissionTypeHandler(IPermissionTypeService permissionTypeService)
         {
-            _permissionTypeService = itemService;
+            _permissionTypeService = permissionTypeService;
         }
         public async Task<Response<UpdatePermissionTypeResult>> Handle(UpdatePermissionTypeRequest request, CancellationToken cancellationToken)
         {
-            await ValidateExistItemAsync(request);
+            await ValidateExistPermissionTypeAsync(request);
 
-            var item = await _permissionTypeService.UpdateAsync(request.ToPermissionTypeDto());
+            var permissionTypeDto = await _permissionTypeService.UpdateAsync(request.ToPermissionTypeDto());
 
-            var itemResult = new UpdatePermissionTypeResult(item);
+            var permissionTypeResult = new UpdatePermissionTypeResult(permissionTypeDto);
 
-            return new Response<UpdatePermissionTypeResult>(itemResult);
+            return new Response<UpdatePermissionTypeResult>(permissionTypeResult);
         }
 
-        private async Task ValidateExistItemAsync(UpdatePermissionTypeRequest request)
+        private async Task ValidateExistPermissionTypeAsync(UpdatePermissionTypeRequest request)
         {
-            var itemEntity = await _permissionTypeService.GetAsync(request.Id);
+            var permissionTypeEntity = await _permissionTypeService.GetAsync(request.Id);
 
-            if (itemEntity is null)
+            if (permissionTypeEntity is null)
             {
                 throw new NotFoundException(MessageGeneral.DontExist);
             }

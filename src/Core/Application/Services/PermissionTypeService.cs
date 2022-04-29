@@ -32,8 +32,8 @@ namespace N5.Application.Services
 
         public async  Task<PermissionTypeDto> SaveAsync(PermissionTypeDto dto)
         {
-            var item = await _permissionTypeRepository.Add(dto.ToPermissionType());
-            dto.Id = item.Id;
+            var entity = await _permissionTypeRepository.Add(dto.ToPermissionType());
+            dto.Id = entity.Id;
             return dto;
         }
 

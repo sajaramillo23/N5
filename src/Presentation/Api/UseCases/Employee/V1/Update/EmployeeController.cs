@@ -13,11 +13,11 @@ namespace N5.UseCases.Employee.V1
         [Route("{id}")]
         [ProducesResponseType(typeof(UpdateEmployeeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> updateEmployeeAsync(UpdateEmployeeRequest itemRequest, int id)
+        public async Task<IActionResult> updateEmployeeAsync(UpdateEmployeeRequest employeeRequest, int id)
         {
-            itemRequest.Id = id;
-            _logger.LogInformation($"Calling method Employee/update {id}", itemRequest);
-            var response = await _mediator.Send(itemRequest.ToUpdateEmployeeRequest());
+            employeeRequest.Id = id;
+            _logger.LogInformation($"Calling method Employee/update {id}", employeeRequest);
+            var response = await _mediator.Send(employeeRequest.ToUpdateEmployeeRequest());
             return Ok(response);
         }
     }

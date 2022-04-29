@@ -10,12 +10,12 @@ namespace N5.Application.UseCases.Employee.Update
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        public UpdateEmployeeResult(EmployeeDto itemDto)
+        public UpdateEmployeeResult(EmployeeDto employeeDto)
         {
-            Id = itemDto.Id;
-            FirstName = itemDto.FirstName;
-            LastName = itemDto.LastName;
-            Email = itemDto.Email;
+            Id = employeeDto.Id;
+            FirstName = employeeDto.FirstName;
+            LastName = employeeDto.LastName;
+            Email = employeeDto.Email;
         }
     }
 }

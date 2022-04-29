@@ -11,22 +11,22 @@ namespace N5.Application.UseCases.PermissionType.GetById
     {
         private readonly IPermissionTypeService _permissionTypeService;
 
-        public GetPermissionTypeHandler(IPermissionTypeService itemService)
+        public GetPermissionTypeHandler(IPermissionTypeService permissionTypeService)
         {
-            _permissionTypeService = itemService;
+            _permissionTypeService = permissionTypeService;
         }
         public async Task<Response<GetPermissionTypeResult>> Handle(GetPermissionTypeRequest request, CancellationToken cancellationToken)
         {
-            var item = await _permissionTypeService.GetAsync(request.Id);
+            var permissionTypeDto = await _permissionTypeService.GetAsync(request.Id);
 
-            if (item is null)
+            if (permissionTypeDto is null)
             {
                 throw new NotFoundException(MessageGeneral.NotFound, MessageGeneral.DontExist);
             }
 
-            var itemResult = new GetPermissionTypeResult(item);
+            var permissionTypeResult = new GetPermissionTypeResult(permissionTypeDto);
 
-            return new Response<GetPermissionTypeResult>(itemResult);
+            return new Response<GetPermissionTypeResult>(permissionTypeResult);
         }
     }
 }

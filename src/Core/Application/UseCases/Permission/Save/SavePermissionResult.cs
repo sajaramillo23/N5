@@ -12,11 +12,11 @@ namespace N5.Application.UseCases.Permission.Save
 
         
         public SavePermissionResult() { }
-        public SavePermissionResult(PermissionDto itemDto) 
+        public SavePermissionResult(PermissionDto permissionDto) 
         {
-            Id = itemDto.Id;
-            Name = itemDto.Name;
-            PermissionTypeId = itemDto.PermissionTypeId;
+            Id = permissionDto.Id;
+            Name = permissionDto.Name;
+            PermissionTypeId = permissionDto.PermissionTypeId;
         }
 
         public GetPermissionResult ToGetPermissionResult()

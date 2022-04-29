@@ -8,10 +8,10 @@ namespace N5.Application.UseCases.PermissionType.Update
         public int Id { get; set; }
         public string Name { get; set; }        
 
-        public UpdatePermissionTypeResult(PermissionTypeDto itemDto)
+        public UpdatePermissionTypeResult(PermissionTypeDto permissionTypeDto)
         {
-            Id = itemDto.Id;
-            Name = itemDto.Name;
+            Id = permissionTypeDto.Id;
+            Name = permissionTypeDto.Name;
             
         }
     }

@@ -13,11 +13,11 @@ namespace N5.UseCases.Permission.V1
         [Route("ModifyPermission/{id}")]
         [ProducesResponseType(typeof(UpdatePermissionResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> updatePermissionAsync(UpdatePermissionRequest itemRequest, int id)
+        public async Task<IActionResult> updatePermissionAsync(UpdatePermissionRequest permissionRequest, int id)
         {
-            itemRequest.Id = id;
-            _logger.LogInformation($"Calling method EmployeePermission/ModifyPermission {id}", itemRequest);
-            var response = await _mediator.Send(itemRequest.ToUpdatePermissionRequest());
+            permissionRequest.Id = id;
+            _logger.LogInformation($"Calling method EmployeePermission/ModifyPermission {id}", permissionRequest);
+            var response = await _mediator.Send(permissionRequest.ToUpdatePermissionRequest());
             return Ok(response);
         }
     }

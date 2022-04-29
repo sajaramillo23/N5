@@ -11,22 +11,22 @@ namespace N5.Application.UseCases.EmployeePermission.GetById
     {
         private readonly IEmployeePermissionService _EmployeePermissionService;
 
-        public GetEmployeePermissionHandler(IEmployeePermissionService itemService)
+        public GetEmployeePermissionHandler(IEmployeePermissionService employeePermissionService)
         {
-            _EmployeePermissionService = itemService;
+            _EmployeePermissionService = employeePermissionService;
         }
         public async Task<Response<GetEmployeePermissionResult>> Handle(GetEmployeePermissionRequest request, CancellationToken cancellationToken)
         {
-            var item = await _EmployeePermissionService.GetAsync(request.Id);
+            var employeePermissionDto = await _EmployeePermissionService.GetAsync(request.Id);
 
-            if (item is null)
+            if (employeePermissionDto is null)
             {
                 throw new NotFoundException(MessageGeneral.NotFound, MessageGeneral.DontExist);
             }
 
-            var itemResult = new GetEmployeePermissionResult(item);
+            var employeePermissionResult = new GetEmployeePermissionResult(employeePermissionDto);
 
-            return new Response<GetEmployeePermissionResult>(itemResult);
+            return new Response<GetEmployeePermissionResult>(employeePermissionResult);
         }
     }
 }

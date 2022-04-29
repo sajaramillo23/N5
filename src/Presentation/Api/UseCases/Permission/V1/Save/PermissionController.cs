@@ -13,10 +13,10 @@ namespace N5.UseCases.Permission.V1
         [Route("RequestPermission")]
         [ProducesResponseType(typeof(SavePermissionResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> savePermissionAsync(SavePermissionRequest itemRequest)
+        public async Task<IActionResult> savePermissionAsync(SavePermissionRequest permissionRequest)
         {
-            _logger.LogInformation($"Executing RequestPermission operation with Id", itemRequest);
-            var response = await _mediator.Send(itemRequest.ToSavePermissionRequest());
+            _logger.LogInformation($"Executing RequestPermission operation with Id", permissionRequest);
+            var response = await _mediator.Send(permissionRequest.ToSavePermissionRequest());
             var elasticService = new ElasticSearchService<SavePermissionResult>(_elasticClient);
             await elasticService.Post(response.Data);
             

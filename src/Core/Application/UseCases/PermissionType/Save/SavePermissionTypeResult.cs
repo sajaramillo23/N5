@@ -9,10 +9,10 @@ namespace N5.Application.UseCases.PermissionType.Save
         public string Name { get; set; }
         
 
-        public SavePermissionTypeResult(PermissionTypeDto itemDto) 
+        public SavePermissionTypeResult(PermissionTypeDto permissionTypeDto) 
         {
-            Id = itemDto.Id;
-            Name = itemDto.Name;            
+            Id = permissionTypeDto.Id;
+            Name = permissionTypeDto.Name;            
         }
     }
 }

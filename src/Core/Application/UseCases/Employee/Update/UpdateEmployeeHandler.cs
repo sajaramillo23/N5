@@ -17,20 +17,20 @@ namespace N5.Application.UseCases.Employee.Update
         }
         public async Task<Response<UpdateEmployeeResult>> Handle(UpdateEmployeeRequest request, CancellationToken cancellationToken)
         {
-            await ValidateExistItemAsync(request);
+            await ValidateExistEmployeeAsync(request);
 
-            var item = await _employeeService.UpdateAsync(request.ToEmployeeDto());
+            var employeeDto = await _employeeService.UpdateAsync(request.ToEmployeeDto());
 
-            var itemResult = new UpdateEmployeeResult(item);
+            var employeeResult = new UpdateEmployeeResult(employeeDto);
 
-            return new Response<UpdateEmployeeResult>(itemResult);
+            return new Response<UpdateEmployeeResult>(employeeResult);
         }
 
-        private async Task ValidateExistItemAsync(UpdateEmployeeRequest request)
+        private async Task ValidateExistEmployeeAsync(UpdateEmployeeRequest request)
         {
-            var itemEntity = await _employeeService.GetAsync(request.Id);
+            var employeeEntity = await _employeeService.GetAsync(request.Id);
 
-            if (itemEntity is null)
+            if (employeeEntity is null)
             {
                 throw new NotFoundException(MessageGeneral.DontExist);
             }

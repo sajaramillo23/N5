@@ -10,17 +10,17 @@ namespace N5.Application.UseCases.PermissionType.Save
     {
         private readonly IPermissionTypeService permissionTypeService;
 
-        public SavePermissionTypeHandler(IPermissionTypeService itemService)
+        public SavePermissionTypeHandler(IPermissionTypeService permissionTypeService)
         {
-            permissionTypeService = itemService;
+            this.permissionTypeService = permissionTypeService;
         }
         public async Task<Response<SavePermissionTypeResult>> Handle(SavePermissionTypeRequest request, CancellationToken cancellationToken)
         {
-           var item = await permissionTypeService.SaveAsync(request.ToPermissionTypeDto());
+           var permissionTypeDto = await permissionTypeService.SaveAsync(request.ToPermissionTypeDto());
 
-            var itemResult = new SavePermissionTypeResult(item);
+            var permissionTypeResult = new SavePermissionTypeResult(permissionTypeDto);
 
-            return new Response<SavePermissionTypeResult>(itemResult);
+            return new Response<SavePermissionTypeResult>(permissionTypeResult);
         }
     }
 }

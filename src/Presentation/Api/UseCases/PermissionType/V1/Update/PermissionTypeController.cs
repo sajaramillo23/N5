@@ -13,12 +13,12 @@ namespace N5.UseCases.PermissionType.V1
         [Route("{id}")]
         [ProducesResponseType(typeof(UpdatePermissionTypeResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> updatePermissionTypeAsync(UpdatePermissionTypeRequest itemRequest, int id)
+        public async Task<IActionResult> updatePermissionTypeAsync(UpdatePermissionTypeRequest permissionTypeRequest, int id)
         {
-            itemRequest.Id = id;
-            _logger.LogInformation($"Executing PermissionType operation Update with Id {id}", itemRequest);
+            permissionTypeRequest.Id = id;
+            _logger.LogInformation($"Executing PermissionType operation Update with Id {id}", permissionTypeRequest);
 
-            var response = await _mediator.Send(itemRequest.ToUpdatePermissionTypeRequest());
+            var response = await _mediator.Send(permissionTypeRequest.ToUpdatePermissionTypeRequest());
             return Ok(response);
         }
     }

@@ -11,11 +11,11 @@ namespace N5.Application.UseCases.Permission.Update
 
         public UpdatePermissionResult() { }
 
-        public UpdatePermissionResult(PermissionDto itemDto)
+        public UpdatePermissionResult(PermissionDto permissionDto)
         {
-            Id = itemDto.Id;
-            Name = itemDto.Name;
-            PermissionTypeId = itemDto.PermissionTypeId;
+            Id = permissionDto.Id;
+            Name = permissionDto.Name;
+            PermissionTypeId = permissionDto.PermissionTypeId;
         }
     }
 }
