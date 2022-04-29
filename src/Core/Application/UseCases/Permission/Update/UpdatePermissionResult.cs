@@ -9,6 +9,8 @@ namespace N5.Application.UseCases.Permission.Update
         public string Name { get; set; }
         public int PermissionTypeId { get; set; }
 
+        public UpdatePermissionResult() { }
+
         public UpdatePermissionResult(PermissionDto itemDto)
         {
             Id = itemDto.Id;

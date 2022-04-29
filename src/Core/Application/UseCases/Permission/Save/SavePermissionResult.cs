@@ -10,6 +10,8 @@ namespace N5.Application.UseCases.Permission.Save
         public int Id { get; set; }        
         public int PermissionTypeId { get; set; }
 
+        
+        public SavePermissionResult() { }
         public SavePermissionResult(PermissionDto itemDto) 
         {
             Id = itemDto.Id;
