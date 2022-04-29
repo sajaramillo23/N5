@@ -47,7 +47,7 @@ namespace N5.Application.Services
 
             entity.Id = dto.Id;
             entity.FirstName = dto.FirstName;
-            entity.LastName = entity.LastName;
+            entity.LastName = dto.LastName;
             entity.Email = dto.Email;
 
             await _employeeRepository.Update(entity);

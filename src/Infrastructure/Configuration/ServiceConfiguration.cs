@@ -15,7 +15,7 @@ namespace N5.Configuration
             //INFRASTRUCTURE
             services.ConfigurePersistenceServices(configuration);
             //elastic search
-            ConfigureElasticSearch(services);
+            ConfigureElasticSearch(services,configuration);
             //ILoger
             services.AddLogging();
             //other services
@@ -27,10 +27,12 @@ namespace N5.Configuration
             return services;
         }
 
-        private static void ConfigureElasticSearch(IServiceCollection services)
+        private static void ConfigureElasticSearch(IServiceCollection services, IConfiguration configuration)
         {
             //configures Elastic Search
-            var settings = new ConnectionSettings();
+            var serverURL = configuration.GetSection("AppSettings")?.GetSection("ElasticSearchServerURL")?.Value??
+                "http://localhost:9200";
+            var settings = new ConnectionSettings(new System.Uri("http://n5IndexService:9200"));
             services.AddSingleton<IElasticClient>(new ElasticClient(settings));
         }
 
