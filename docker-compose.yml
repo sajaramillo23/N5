@@ -8,11 +8,13 @@ services:
     build:
       context: .
       dockerfile: src/Presentation/Api/Dockerfile
+      
     depends_on:
         - n5db
         - n5IndexService
     networks:
         - N5Network
+    
   n5db:
     container_name: "sql"
     image: mcr.microsoft.com/mssql/server

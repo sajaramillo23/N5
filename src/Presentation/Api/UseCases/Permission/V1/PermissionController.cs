@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Nest;
 
-namespace Net_Experience.UseCases.Permission.V1
+namespace N5.UseCases.Permission.V1
 {
     [ApiController]
     //[EnableCors("allowSpecificOrigins")]

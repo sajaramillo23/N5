@@ -5,7 +5,7 @@ using N5.Application.UseCases.Permission.Update;
 using System;
 using System.Threading.Tasks;
 
-namespace Net_Experience.UseCases.Permission.V1
+namespace N5.UseCases.Permission.V1
 {
     public partial class PermissionController
     {

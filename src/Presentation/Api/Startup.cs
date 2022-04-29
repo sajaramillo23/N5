@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using N5.Configuration;
-using Net_Experience.Middleware;
+using N5.Middleware;
 
-namespace Net_Experience
+namespace N5
 {
     public class Startup
     {

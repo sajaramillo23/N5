@@ -5,7 +5,7 @@ using N5.Application.UseCases.Employee.Update;
 using System;
 using System.Threading.Tasks;
 
-namespace Net_Experience.UseCases.Employee.V1
+namespace N5.UseCases.Employee.V1
 {
     public partial class EmployeeController
     {

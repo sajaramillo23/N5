@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using R = N5.Application.UseCases.Employee.Update;
 
-namespace Net_Experience.UseCases.Employee.V1
+namespace N5.UseCases.Employee.V1
 {
     public class UpdateEmployeeRequest
     {

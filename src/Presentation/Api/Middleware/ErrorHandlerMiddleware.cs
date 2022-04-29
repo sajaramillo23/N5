@@ -8,7 +8,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Net_Experience.Middleware
+namespace N5.Middleware
 {
     public class ErrorHandlerMiddleware
     {

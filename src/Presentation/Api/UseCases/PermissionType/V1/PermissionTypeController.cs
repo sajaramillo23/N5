@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Net_Experience.UseCases.PermissionType.V1
+namespace N5.UseCases.PermissionType.V1
 {
     [ApiController]
     //[EnableCors("allowSpecificOrigins")]

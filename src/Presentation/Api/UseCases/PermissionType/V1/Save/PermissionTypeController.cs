@@ -5,7 +5,7 @@ using N5.Application.UseCases.PermissionType.Save;
 
 using System.Threading.Tasks;
 
-namespace Net_Experience.UseCases.PermissionType.V1
+namespace N5.UseCases.PermissionType.V1
 {
     public partial class PermissionTypeController
     {

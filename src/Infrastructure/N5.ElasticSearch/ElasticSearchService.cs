@@ -15,7 +15,7 @@ namespace N5.ElasticSearch
         {
             _elasticClient = elasticClient;
         }
-        public async Task<T> Get(int id)
+        public async Task<T?> Get(int id)
         {
             var response = await _elasticClient.SearchAsync<T>(s => s.Index(typeof(T).Name.ToLower()
                 ).Query(q => q.Match(m => m.Field(f=>f.Name).Query(id.ToString()))));

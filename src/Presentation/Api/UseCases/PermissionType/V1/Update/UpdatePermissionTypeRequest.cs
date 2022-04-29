@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using R = N5.Application.UseCases.PermissionType.Update;
 
-namespace Net_Experience.UseCases.PermissionType.V1
+namespace N5.UseCases.PermissionType.V1
 {
     public class UpdatePermissionTypeRequest
     {

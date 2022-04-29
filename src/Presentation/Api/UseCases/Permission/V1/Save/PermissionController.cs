@@ -5,7 +5,7 @@ using N5.Application.UseCases.Permission.Save;
 using N5.ElasticSearch;
 using System.Threading.Tasks;
 
-namespace Net_Experience.UseCases.Permission.V1
+namespace N5.UseCases.Permission.V1
 {
     public partial class PermissionController
     {
