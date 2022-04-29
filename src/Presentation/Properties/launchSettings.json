@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Net-Experience": {
+    "N5": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
